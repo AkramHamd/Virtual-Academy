@@ -1,0 +1,53 @@
+-- Users Table
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(255),
+  role ENUM('student', 'admin'),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Courses Table
+CREATE TABLE courses (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(100),
+  description TEXT,
+  category VARCHAR(50),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Modules Table
+CREATE TABLE modules (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  course_id INT,
+  title VARCHAR(100),
+  video_url VARCHAR(255),
+  support_material_url VARCHAR(255),
+  FOREIGN KEY (course_id) REFERENCES courses(id)
+);
+
+-- Enrollments Table
+CREATE TABLE enrollments (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT,
+  course_id INT,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (course_id) REFERENCES courses(id)
+);
+
+-- Comments Table
+CREATE TABLE comments (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  course_id INT,
+  user_id INT,
+  comment TEXT,
+  rating INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (course_id) REFERENCES courses(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
