@@ -1,0 +1,56 @@
+virtual-academy/
+│
+├── backend/                              # Backend files (PHP and MySQL)
+│   ├── api/                              # API endpoints
+│   │   ├── auth/                         # User authentication-related endpoints
+│   │   │   ├── login.php                 # Login endpoint
+│   │   │   ├── logout.php                # Logout endpoint
+│   │   │   ├── register.php              # Registration endpoint
+│   │   │   └── user.php                  # Get current user details
+│   │   ├── courses/                      # Course-related endpoints
+│   │   │   ├── create_course.php         # Create new course (Admin)
+│   │   │   ├── update_course.php         # Update existing course (Admin)
+│   │   │   ├── delete_course.php         # Delete course (Admin)
+│   │   │   ├── get_courses.php           # Get list of all courses
+│   │   │   └── get_course_by_id.php      # Get details of a specific course
+│   │   ├── enrollments/                  # Enrollment-related endpoints
+│   │   │   ├── enroll.php                # Enroll a user in a course
+│   │   └── comments/                     # Comments-related endpoints
+│   │       ├── add_comment.php           # Add comment and rating to a course
+│   │       └── get_comments.php          # Get all comments for a course
+│   ├── config/                           # Configuration files
+│   │   └── db_connection.php             # Database connection file
+│   ├── sql/                              # Database schema and migrations
+│   │   └── schema.sql                    # SQL script to create initial tables
+│   ├── utils/                            # Utility files (helpers, etc.)
+│   │   └── functions.php                 # Helper functions
+│   └── index.php                         # Main entry point for the backend
+│
+├── frontend/                             # Frontend files (React)
+│   ├── public/                           # Public files
+│   │   ├── index.html                    # HTML entry point
+│   │   └── favicon.ico                   # Favicon for the app
+│   ├── src/                              # React source files
+│   │   ├── components/                   # Reusable React components
+│   │   │   ├── CourseCard.js             # Course card component
+│   │   │   ├── Navbar.js                 # Navigation bar component
+│   │   │   └── CommentForm.js            # Comment form component
+│   │   ├── pages/                        # Pages for routing
+│   │   │   ├── HomePage.js               # Home page
+│   │   │   ├── CourseCatalogPage.js      # Course catalog page
+│   │   │   ├── CourseDetailsPage.js      # Course details page
+│   │   │   ├── AdminDashboardPage.js     # Admin dashboard
+│   │   │   └── LoginPage.js              # Login page
+│   │   ├── services/                     # API services (fetch functions)
+│   │   │   ├── authService.js            # Service for user authentication (login, register)
+│   │   │   ├── courseService.js          # Service for courses (fetching, creating, updating)
+│   │   │   └── enrollmentService.js      # Service for course enrollments
+│   │   ├── App.js                        # Main React component
+│   │   ├── index.js                      # React entry point
+│   │   ├── App.css                       # Global styles
+│   │   └── routes.js                     # Application routing
+│   └── package.json                      # Frontend dependencies
+│
+├── README.md                             # Project overview and setup instructions
+├── .gitignore                            # Git ignore file
+└── LICENSE                               # License file
