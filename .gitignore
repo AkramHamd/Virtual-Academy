@@ -41,7 +41,8 @@ Thumbs.db
 *.sublime-project
 
 # PHP specific files
-/vendor/
+*/vendor/
+backend/vendor/
 composer.lock
 
 # XAMPP specific files (if necessary)
@@ -58,3 +59,5 @@ composer.lock
 *.bak
 *.tmp
 *.temp
+
+.venv/
