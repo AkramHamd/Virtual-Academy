@@ -23,10 +23,11 @@ try {
 
     // Display a generic error message without exposing sensitive details
     echo "An error occurred while connecting to the database. Please try again later.";
-} finally {
-    // Optionally, close the connection if it's open (not mandatory here but useful in long scripts)
-    if (isset($conn) && $conn->ping()) {
-        $conn->close();
-    }
-}
+} 
+// finally {
+//     // Optionally, close the connection if it's open (not mandatory here but useful in long scripts)
+//     if (isset($conn) && $conn->ping()) {
+//         $conn->close();
+//     }
+// }
 ?>
