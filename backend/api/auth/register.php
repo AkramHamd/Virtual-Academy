@@ -7,7 +7,7 @@ session_start(); // Iniciar la sesión
 if ($conn->connect_errno) {
     die(json_encode(array("message" => "Database connection error: " . $conn->connect_error)));
 } else {
-    echo "Connected successfully to the database\n"; // Comprobación de depuración
+    // echo "Connected successfully to the database\n"; // Comprobación de depuración
 }
 
 // Obtener datos enviados por POST
