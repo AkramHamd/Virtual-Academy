@@ -3,7 +3,7 @@
 $servername = "localhost";  // Para Windows usa esta
 $username = "root";         // Default username in XAMPP is 'root'
 $password = "";             // Default password is empty
-$dbname = "virtual_academy"; // Your database name
+$dbname = "virtual_academy"; // Cambia la base de datos si le pusiste otro nombre
 
 // Create a connection using MySQLi with error handling
 try {
