@@ -58,3 +58,5 @@ composer.lock
 *.bak
 *.tmp
 *.temp
+
+.venv/
