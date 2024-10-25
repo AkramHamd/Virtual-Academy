@@ -59,7 +59,7 @@ composer.lock
 *.bak
 *.tmp
 *.temp
-
+*tmp/
 
 .venv/
 *cookies.txt
