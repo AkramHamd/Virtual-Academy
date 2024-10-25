@@ -46,7 +46,7 @@ To run the project locally, you will need the following:
 ### Backend Setup (PHP + MySQL)
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-repo/virtual-academy.git
+    git clone https://github.com/AkramHamd/Virtual-Academy.git
     cd virtual-academy/backend
     ```
 
