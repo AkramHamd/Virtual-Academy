@@ -9,7 +9,7 @@ $data = json_decode(file_get_contents("php://input"));
 // Verificar que el email y la contraseña no estén vacíos
 if (!empty($data->email) && !empty($data->password)) {
     // Buscar al usuario por su email
-    $query = "SELECT id, name, email, password FROM users WHERE email = ?";
+    $query = "SELECT id, name, email, password, role FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
     if (!$stmt) {
         die(json_encode(array("message" => "Error preparing statement: " . $conn->error)));
@@ -20,7 +20,7 @@ if (!empty($data->email) && !empty($data->password)) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $name, $email, $password_hash);
+        $stmt->bind_result($id, $name, $email, $password_hash, $role);
         $stmt->fetch();
 
         // Verificar la contraseña
@@ -29,6 +29,7 @@ if (!empty($data->email) && !empty($data->password)) {
             $_SESSION['user_id'] = $id;
             $_SESSION['user_name'] = $name;
             $_SESSION['user_email'] = $email;
+            $_SESSION['role'] = $role;
 
             echo json_encode(array("message" => "Login successful."));
         } else {

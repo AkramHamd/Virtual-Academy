@@ -7,7 +7,8 @@ if (isset($_SESSION['user_id'])) {
     echo json_encode(array(
         "id" => $_SESSION['user_id'],
         "name" => $_SESSION['user_name'],
-        "email" => $_SESSION['user_email']
+        "email" => $_SESSION['user_email'],
+        "role" => $_SESSION['role']
     ));
 } else {
     // El usuario no está autenticado
