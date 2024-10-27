@@ -56,7 +56,9 @@ export default function LoginPage() {
           />
           <Submit disabled={isInvalid} type="submit">Sign In</Submit>
         </Base>
+        
         <Text>
+          
           New to our platform? <Link to="/register">Sign up now.</Link>
         </Text>
       </Container>

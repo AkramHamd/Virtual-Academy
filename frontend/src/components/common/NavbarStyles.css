@@ -43,12 +43,16 @@ body {
   color: white;
   border: none;
   margin-right: 16px;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
+  font-weight: bold;
+  color: #e50914;
+  outline: none;
 }
 
 .navbar-links ul {
@@ -62,7 +66,13 @@ body {
   margin-left: auto;
   display: flex;
   align-items: center;
+  font-weight: bold;
   gap: 16px;
+}
+
+.navbar-actions a:focus, .navbar-actions a:visited {
+  color: white; /* Ensures the color stays the same when clicked */
+  outline: none; /* Removes the outline around the link when clicked */
 }
 
 /* Profile image styling */
@@ -81,7 +91,3 @@ body {
   outline: none;
 }
 
-.navbar-logo a:focus, .navbar-logo a:visited {
-  color: #e50914;
-  outline: none;
-}
