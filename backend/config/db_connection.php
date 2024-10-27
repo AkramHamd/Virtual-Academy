@@ -16,7 +16,7 @@ try {
         throw new Exception("Connection failed: " . $conn->connect_error);
     }
 
-    echo "Connected successfully to the database";
+    // echo "Connected successfully to the database";
 } catch (Exception $e) {
     // Log the error message (for production environments, logging should be used instead of displaying errors)
     error_log($e->getMessage());

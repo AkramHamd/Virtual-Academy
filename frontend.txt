@@ -1,0 +1,6 @@
+# Install Axios and React Router
+npm install axios react-router-dom
+
+# Install Tailwind CSS (optional but recommended for styling)
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
