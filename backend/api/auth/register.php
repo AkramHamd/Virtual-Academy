@@ -1,6 +1,11 @@
 <?php
 require '../../config/db_connection.php'; // Incluir conexión a la base de datos
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
+
+
 session_start(); // Iniciar la sesión
 
 // Verificar si la conexión está activa antes de continuar

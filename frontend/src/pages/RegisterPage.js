@@ -9,16 +9,16 @@ const RegisterPage = () => {
 
     const handleRegister = async (event) => {
         event.preventDefault();
-
+    
         try {
             const response = await fetch('http://localhost/virtual-academy/backend/api/auth/register.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password }),
             });
-
+    
             const result = await response.json();
-
+    
             if (response.ok) {
                 setMessage('Registration successful! You can now log in.');
             } else {
@@ -26,9 +26,10 @@ const RegisterPage = () => {
             }
         } catch (error) {
             console.error('Error:', error);
-            setMessage('An error occurred during registration.');
+            setMessage(`An error occurred during registration: ${error.message}`);
         }
     };
+    
 
     return (
         <div>
