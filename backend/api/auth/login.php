@@ -1,8 +1,18 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type");
+// Allow only specific origin (your React app's address)
+header("Access-Control-Allow-Origin: http://localhost:3000");
+// Allow credentials to be included (cookies, authorization headers, etc.)
+header("Access-Control-Allow-Credentials: true");
+// Allow necessary HTTP methods
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT");
+// Allow necessary headers
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+// Handle preflight requests (OPTIONS)
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit(0); // Return 200 OK with the CORS headers for preflight
+}
+
 
 
 require '../../config/db_connection.php';
