@@ -1,17 +1,15 @@
-import React, { useContext } from 'react';
+// src/components/common/Navbar.js
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
-import authService from '../../services/authService';
-import logo from '../../assets/images/logo.svg';
+import { useAuth } from '../../contexts/AuthContext';
 import './NavbarStyles.css';
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
   const handleLogout = async () => {
-    await authService.logout();
-    setIsAuthenticated(false); // Update authentication state
+    await logout();
     navigate('/login');
   };
 
@@ -27,10 +25,10 @@ export default function Navbar() {
         </ul>
       </nav>
       <nav className="navbar-actions">
-        {isAuthenticated ? (
+        {user ? (
           <>
             <button onClick={handleLogout}>Logout</button>
-            <img src="path/to/profile-image.jpg" alt="Profile" className="profile-image" />
+            <li><Link to="/user">My Account</Link></li>
           </>
         ) : (
           <Link to="/login">Log In</Link>
