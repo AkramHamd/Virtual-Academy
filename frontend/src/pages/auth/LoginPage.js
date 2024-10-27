@@ -8,17 +8,22 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const isInvalid = password === '' || email === '';
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccessMessage('');
 
     try {
       const response = await authService.login(email, password);
       if (response && response.message === 'Login successful.') {
-        alert('Login Successful');
+        setSuccessMessage('Login Successful!');
+        setTimeout(() => {
+          window.location.href = '/user'; // Force reload by setting the location
+        }, 2000); // Delay to show success message for 2 seconds
       } else {
         setError(response?.message || 'Login failed. Please try again.');
       }
@@ -34,6 +39,7 @@ export default function LoginPage() {
       <Container>
         <Title>Sign In</Title>
         {error && <Error>{error}</Error>}
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         <Base onSubmit={handleLogin} method="POST">
           <Input
             type="email"
