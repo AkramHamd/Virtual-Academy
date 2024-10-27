@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import courseService from '../services/courseService';
-import CourseCard from '../components/CourseCard';
+import courseService from '../../services/courseService';
+import CourseCard from '../../components/CourseCard';
 
 export default function CourseCatalogPage() {
   const [courses, setCourses] = useState([]);
