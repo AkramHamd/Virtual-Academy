@@ -6,12 +6,13 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import UserPage from './pages/UserPage';
+import LandingPage  from './pages/LandingPage';
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<LandingPage />} />
                 <Route path="/courses" element={<CourseCatalogPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
