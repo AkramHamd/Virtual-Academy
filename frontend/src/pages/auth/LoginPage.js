@@ -1,72 +1,59 @@
+// src/pages/auth/LoginPage.js
 import { useState } from 'react';
 import authService from '../../services/authService';
+import { Container, Error, Base, Title, Input, Submit, Text, Link } from '../../components/forms/FormStyles';
+import Navbar from '../../components/common/Navbar';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Email and password validation function
-  const validateInput = () => {
-    // Check for basic email pattern and non-empty password
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      setError('Please enter a valid email address.');
-      return false;
-    }
-    setError('');
-    return true;
-  };
+  const isInvalid = password === '' || email === '';
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Validate input before attempting login
-    if (!validateInput()) return;
-
-    setLoading(true);
     setError('');
 
     try {
       const response = await authService.login(email, password);
       if (response && response.message === 'Login successful.') {
         alert('Login Successful');
-        // Here you can redirect the user or update the UI as needed
-      } else if (response && response.message) {
-        setError(response.message);
       } else {
-        setError('Login failed. Please try again.');
+        setError(response?.message || 'Login failed. Please try again.');
       }
     } catch (err) {
-      setError('An error occurred. Please check your network or try again later.');
+      setError('An error occurred. Please try again.');
       console.error('Login error:', err);
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleLogin} className="login-form">
-      <h2>Login</h2>
-      {error && <p className="error-message">{error}</p>}
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit" disabled={loading}>
-        {loading ? 'Logging in...' : 'Login'}
-      </button>
-    </form>
+    <>
+      <Navbar />
+      <Container>
+        <Title>Sign In</Title>
+        {error && <Error>{error}</Error>}
+        <Base onSubmit={handleLogin} method="POST">
+          <Input
+            type="email"
+            placeholder="Email address"
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
+          />
+          <Input
+            type="password"
+            placeholder="Password"
+            autoComplete="off"
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
+          />
+          <Submit disabled={isInvalid} type="submit">Sign In</Submit>
+        </Base>
+        <Text>
+          New to our platform? <Link to="/register">Sign up now.</Link>
+        </Text>
+      </Container>
+    </>
   );
 }
