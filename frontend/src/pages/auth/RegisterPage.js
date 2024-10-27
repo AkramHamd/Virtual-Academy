@@ -1,6 +1,7 @@
 // src/pages/RegisterPage.js
 import { useState } from 'react';
 import Navbar from '../../components/common/Navbar';
+import './RegisterPage.css';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -34,7 +35,11 @@ const RegisterPage = () => {
       });
 
       const result = await response.json();
-      setMessage(response.ok ? 'Registration successful! You can now log in.' : result.message || 'Registration failed.');
+      if (response.ok && result.message === "User registered successfully.") {
+        setMessage('Registration successful! You can now log in.');
+      } else {
+        setMessage(result.message || 'Registration failed.');
+      }
     } catch (error) {
       console.error('Error:', error);
       setMessage('An error occurred during registration.');

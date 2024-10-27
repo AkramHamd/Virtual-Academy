@@ -1,0 +1,20 @@
+.course-details-page {
+    padding: 20px;
+    color: #fff;
+    background-color: #141414;
+  }
+  
+  .course-details-page h1 {
+    color: #e50914;
+  }
+  
+  .course-details-page button {
+    background-color: #e50914;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
