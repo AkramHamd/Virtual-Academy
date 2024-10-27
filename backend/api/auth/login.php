@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 
-
 require '../../config/db_connection.php';
 
 session_start(); // Iniciar la sesión
