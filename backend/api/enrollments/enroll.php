@@ -22,15 +22,15 @@ if (isset($_SESSION['user_id']) && !empty($data->course_id)) {
         exit();
     }
 
-    // Verificar si el usuario existe
-    $user_check_query = "SELECT * FROM users WHERE id = ?";
-    $user_check_stmt = $conn->prepare($user_check_query);
-    $user_check_stmt->bind_param('i', $user_id);
-    $user_check_stmt->execute();
-    $user_check_stmt->store_result();
+    // Verificar que el curso existe
+    $course_check_query = "SELECT id FROM courses WHERE id = ?";
+    $course_check_stmt = $conn->prepare($course_check_query);
+    $course_check_stmt->bind_param('i', $course_id);
+    $course_check_stmt->execute();
+    $course_check_stmt->store_result();
 
-    if ($user_check_stmt->num_rows === 0) {
-        echo json_encode(array("message" => "User not found."));
+    if ($course_check_stmt->num_rows === 0) {
+        echo json_encode(array("message" => "Course not found."));
         exit();
     }
 
@@ -58,13 +58,13 @@ if (isset($_SESSION['user_id']) && !empty($data->course_id)) {
         } else {
             echo json_encode(array("message" => "Error enrolling user: " . $enroll_stmt->error));
         }
+        $enroll_stmt->close();
     }
 
     // Cerrar declaraciones
     $check_stmt->close();
-    $user_check_stmt->close();
+    $course_check_stmt->close();
     $table_check_stmt->close();
-    $enroll_stmt->close();
 } else {
     echo json_encode(array("message" => "User not logged in or incomplete data."));
 }
