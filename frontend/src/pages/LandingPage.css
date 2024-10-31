@@ -1,0 +1,14 @@
+/* src/pages/LandingPage.css */
+.landing-page {
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  

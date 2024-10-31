@@ -16,8 +16,11 @@ virtual-academy/
 │   │   ├── enrollments/                  # Enrollment-related endpoints
 │   │   │   ├── enroll.php                # Enroll a user in a course
 │   │   └── comments/                     # Comments-related endpoints
-│   │       ├── add_comment.php           # Add comment and rating to a course
-│   │       └── get_comments.php          # Get all comments for a course
+│   │       ├── add_comment.php           # Add comment and rating to a course (Admin)
+│   │       ├── get_comments.php          # Get all comments for a course
+│   │       ├── get_comments_by_course.php # Get comments by course 
+│   │       ├── update_comments.php       # Update existing course (Admin)
+│   │       └── delete_comments.php       # Delete comments (Admin)
 │   ├── config/                           # Configuration files
 │   │   └── db_connection.php             # Database connection file
 │   ├── sql/                              # Database schema and migrations

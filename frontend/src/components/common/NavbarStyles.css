@@ -1,0 +1,93 @@
+/* Global reset and font styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+body {
+  background-color: #141414;
+  font-family: sans-serif;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 16px 5%;
+  font-size: 12px;
+  background-color: #141414;
+}
+
+.navbar img {
+  height: 28px;
+}
+
+/* Prevent highlighting on clicked links */
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+  margin-left: 16px;
+  font-weight: bold;
+  outline: none;
+}
+
+.navbar-links a:focus, .navbar-links a:visited {
+  color: white; /* Ensures the color stays the same when clicked */
+  outline: none; /* Removes the outline around the link when clicked */
+}
+
+.navbar-actions button {
+  background: none;
+  color: white;
+  border: none;
+  margin-right: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #e50914;
+  outline: none;
+}
+
+.navbar-links ul {
+  list-style: none;
+  display: flex;
+  font-weight: bold;
+  gap: 16px;
+}
+
+.navbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  gap: 16px;
+}
+
+.navbar-actions a:focus, .navbar-actions a:visited {
+  color: white; /* Ensures the color stays the same when clicked */
+  outline: none; /* Removes the outline around the link when clicked */
+}
+
+/* Profile image styling */
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+/* Logo styling */
+.navbar-logo a {
+  color: #e50914;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  outline: none;
+}
+
