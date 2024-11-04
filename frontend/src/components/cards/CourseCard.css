@@ -48,3 +48,41 @@
 .play-button:hover {
   background-color: #b00610;
 }
+
+
+.course-card button {
+  background-color: #e50914;
+  color: white;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.course-card button:hover {
+  background-color: #d40813;
+}
+
+.enroll-message {
+  margin-top: 8px;
+  color: #d40813;
+  font-size: 14px;
+}
+
+.access-button {
+  background-color: #1db954 !important; /* Spotify green color for distinction */
+  color: white;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.access-button:hover {
+  background-color: #1ed760 !important; /* Lighter green on hover */
+}
