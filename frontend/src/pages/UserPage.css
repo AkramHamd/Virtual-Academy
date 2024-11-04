@@ -1,0 +1,100 @@
+.user-page {
+  min-height: 100vh;
+  background-color: #141414;
+  color: #ffffff;
+}
+
+.user-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* User Info Section */
+.user-info-section {
+  background-color: #222;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-section h2 {
+  color: #e50914;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.user-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.user-details p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.user-details strong {
+  color: #e50914;
+  margin-right: 0.5rem;
+}
+
+/* Enrolled Courses Section */
+.enrolled-courses-section {
+  background-color: #222;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.enrolled-courses-section h2 {
+  color: #e50914;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.no-courses-message {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 1.1rem;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: #e50914;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-container {
+    padding: 1rem;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .user-info-section,
+  .enrolled-courses-section {
+    padding: 1rem;
+  }
+
+  .user-info-section h2,
+  .enrolled-courses-section h2 {
+    font-size: 1.5rem;
+  }
+} 

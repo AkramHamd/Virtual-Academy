@@ -9,7 +9,7 @@ export default function CourseDetailsPage() {
 
   useEffect(() => {
     const fetchCourse = async () => {
-      const data = await courseService.getCourseDetails(id);
+      const data = await courseService.getCourseById(id);
       setCourse(data);
     };
     fetchCourse();
@@ -20,7 +20,6 @@ export default function CourseDetailsPage() {
   return (
     <div className="course-details-page">
       <h1>{course.title}</h1>
-      <p>{course.description}</p>
       <button>Enroll Now</button>
     </div>
   );
