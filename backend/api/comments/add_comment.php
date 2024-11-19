@@ -1,13 +1,8 @@
 <?php
-header('Access-Control-Allow-Origin: http://localhost:3000'); // Permite solicitudes solo desde localhost:3000
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
-header('Access-Control-Allow-Credentials: true'); // Permite el envío de credenciales como cookies
-header('Content-Type: application/json');
-
 require '../../config/db_connection.php';
 
 session_start(); // Iniciar la sesión
+header('Content-Type: application/json'); 
 
 // Obtener los datos enviados por POST
 $data = json_decode(file_get_contents("php://input"));
@@ -47,6 +42,7 @@ if (isset($_SESSION['user_id']) && !empty($data->course_id) && !empty($data->com
     $user_check_stmt->bind_result($user_role);
     $user_check_stmt->fetch();
 
+    // Asegurarse de que la declaración se cierre antes de continuar
     $user_check_stmt->close();
 
     if ($user_role !== 'admin') {
@@ -68,20 +64,18 @@ if (isset($_SESSION['user_id']) && !empty($data->course_id) && !empty($data->com
     $insert_stmt->bind_param('iisi', $user_id, $course_id, $comment, $rating);
     
     if ($insert_stmt->execute()) {
-        $new_comment_id = $conn->insert_id; // Obtener el ID generado automáticamente
-        echo json_encode(array(
-            "message" => "Comment added successfully.",
-            "id" => $new_comment_id // Devolver el ID al frontend
-        ));
+        echo json_encode(array("message" => "Comment added successfully."));
     } else {
         echo json_encode(array("message" => "Error adding comment: " . $insert_stmt->error));
     }
 
+    // Cerrar declaraciones
     $insert_stmt->close();
     $course_check_stmt->close();
 } else {
     echo json_encode(array("message" => "User not logged in or incomplete data."));
 }
 
+// Cerrar la conexión
 $conn->close();
 ?>

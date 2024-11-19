@@ -8,7 +8,6 @@ import UserPage from './pages/UserPage';
 import LandingPage from './pages/LandingPage';
 import CourseCatalogPage from './pages/courses/CourseCatalogPage';
 import CourseDetailsPage from './pages/courses/CourseDetailsPage';
-import AdminLayout from './layouts/AdminLayout';
 
 function App() {
     return (
@@ -20,7 +19,6 @@ function App() {
                 <Route path="/user" element={<UserPage />} />
                 <Route path="/courses" element={<CourseCatalogPage />} />
                 <Route path="/courses/:id" element={<CourseDetailsPage />} />
-                <Route path="/admin/*" element={<AdminLayout />} />
             </Routes>
         </Router>
     );
