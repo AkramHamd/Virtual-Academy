@@ -1,4 +1,9 @@
 <?php
+header('Access-Control-Allow-Origin: http://localhost:3000'); // Permite solicitudes solo desde localhost:3000
+header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS'); // Agrega DELETE y OPTIONS
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Access-Control-Allow-Credentials: true'); // Permite credenciales (cookies)
+header('Content-Type: application/json');
 require '../../config/db_connection.php';
 
 session_start(); 
