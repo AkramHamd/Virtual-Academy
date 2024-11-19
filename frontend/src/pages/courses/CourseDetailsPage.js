@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import courseService from '../../services/courseService';
 import Navbar from '../../components/common/Navbar';
 import './CourseDetailsPage.css';
+import CommentManager from '../../components/CommentManager'; // Importar el componente para gestionar comentarios
 
 export default function CourseDetailsPage() {
   const { id } = useParams();
@@ -12,22 +13,23 @@ export default function CourseDetailsPage() {
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [showComments, setShowComments] = useState(false); // Estado para mostrar los comentarios
+  const [isEditing, setIsEditing] = useState(false); // Estado para manejar el modo de edición
+  const [editedComment, setEditedComment] = useState(''); // Estado para almacenar el comentario editado
+  const [commentIdToEdit, setCommentIdToEdit] = useState(null); // Estado para almacenar el id del comentario a editar
 
   useEffect(() => {
     const fetchCourseData = async () => {
       try {
         const courseData = await courseService.getCourseById(id);
-        console.log('Course data:', courseData);
         setCourse(courseData);
 
         const enrolledCourses = await courseService.getEnrolledCourses();
-        console.log('Enrolled courses:', enrolledCourses);
         const enrolled = enrolledCourses.some(course => course.id === parseInt(id));
         setIsEnrolled(enrolled);
 
         if (enrolled) {
           const modulesData = await courseService.getCourseModules(id);
-          console.log('Modules data:', modulesData);
           setModules(modulesData);
           if (modulesData.length > 0) {
             setCurrentModule(modulesData[0]);
@@ -53,7 +55,6 @@ export default function CourseDetailsPage() {
       const response = await courseService.enrollInCourse(id);
       if (response.message === "Enrollment successful.") {
         setIsEnrolled(true);
-        // Fetch modules after successful enrollment
         const modulesData = await courseService.getCourseModules(id);
         setModules(modulesData);
         if (modulesData.length > 0) {
@@ -62,6 +63,21 @@ export default function CourseDetailsPage() {
       }
     } catch (error) {
       console.error("Enrollment error:", error);
+    }
+  };
+
+  const handleEditComment = (comment) => {
+    setIsEditing(true);
+    setEditedComment(comment.text);
+    setCommentIdToEdit(comment.id);
+  };
+
+  const handleConfirmEdit = async () => {
+    try {
+      await courseService.updateComment(commentIdToEdit, editedComment); // Llamada al servicio para actualizar el comentario
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error updating comment:', error);
     }
   };
 
@@ -118,6 +134,33 @@ export default function CourseDetailsPage() {
                 </div>
               ))}
             </div>
+
+            {/* Botón para ver/ocultar los comentarios */}
+            <button onClick={() => setShowComments(!showComments)} className="toggle-comments-btn">
+              {showComments ? 'Hide Comments' : 'View Comments'}
+            </button>
+
+            {/* Mostrar los comentarios si está activado el estado */}
+            {showComments && (
+              <div>
+                <CommentManager
+                  courseId={id}
+                  onEditComment={handleEditComment} // Función para editar un comentario
+                />
+              </div>
+            )}
+
+            {/* Formulario para editar el comentario */}
+            {isEditing && (
+              <div className="edit-comment">
+                <textarea
+                  value={editedComment}
+                  onChange={(e) => setEditedComment(e.target.value)}
+                  placeholder="Edit your comment"
+                />
+                <button onClick={handleConfirmEdit}>Confirm Changes</button>
+              </div>
+            )}
           </div>
         ) : (
           <div className="enroll-section">

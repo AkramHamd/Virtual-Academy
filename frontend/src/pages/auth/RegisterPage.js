@@ -28,7 +28,7 @@ const RegisterPage = () => {
     if (!validateInput()) return;
 
     try {
-      const response = await fetch('http://localhost/virtual-academy/backend/api/auth/register.php', {
+      const response = await fetch('http://localhost/backend/api/auth/register.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
