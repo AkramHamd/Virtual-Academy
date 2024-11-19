@@ -14,12 +14,7 @@ virtual-academy/
 │   │   │   ├── get_courses.php           # Get list of all courses
 │   │   │   └── get_course_by_id.php      # Get details of a specific course
 │   │   ├── enrollments/                  # Enrollment-related endpoints
-│   │   │   └── enroll.php                # Enroll a user in a course
-│   │   ├── modules/                      # Module-related endpoints
-│   │   │   ├── create_module.php         # Create a module in a course
-│   │   │   ├── delete_module.php         # Delete a module in a course
-│   │   │   ├── update_module.php         # Update a module in a course
-│   │   │   └── get_modules_by_course.php # Get all modules for a specific course
+│   │   │   ├── enroll.php                # Enroll a user in a course
 │   │   └── comments/                     # Comments-related endpoints
 │   │       ├── add_comment.php           # Add comment and rating to a course (Admin)
 │   │       ├── get_comments.php          # Get all comments for a course
@@ -42,18 +37,16 @@ virtual-academy/
 │   │   ├── components/                   # Reusable React components
 │   │   │   ├── CourseCard.js             # Course card component
 │   │   │   ├── Navbar.js                 # Navigation bar component
-│   │   │   ├── CommentForm.js            # Comment form component
-│   │   │   └── ModuleManager.js          # Component for managing modules (add, delete, reorder)
+│   │   │   └── CommentForm.js            # Comment form component
 │   │   ├── pages/                        # Pages for routing
 │   │   │   ├── HomePage.js               # Home page
 │   │   │   ├── CourseCatalogPage.js      # Course catalog page
-│   │   │   ├── CourseDetailsPage.js      # Course details page (integrates ModuleManager)
+│   │   │   ├── CourseDetailsPage.js      # Course details page
 │   │   │   ├── AdminDashboardPage.js     # Admin dashboard
 │   │   │   └── LoginPage.js              # Login page
 │   │   ├── services/                     # API services (fetch functions)
 │   │   │   ├── authService.js            # Service for user authentication (login, register)
 │   │   │   ├── courseService.js          # Service for courses (fetching, creating, updating)
-│   │   │   ├── moduleService.js          # Service for managing modules
 │   │   │   └── enrollmentService.js      # Service for course enrollments
 │   │   ├── App.js                        # Main React component
 │   │   ├── index.js                      # React entry point

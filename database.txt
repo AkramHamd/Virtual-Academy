@@ -15,7 +15,6 @@ CREATE TABLE courses (
   title VARCHAR(100),
   description TEXT,
   category VARCHAR(50),
-  cover_image_url TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

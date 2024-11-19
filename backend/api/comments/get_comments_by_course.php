@@ -1,8 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: *'); // Permite solicitudes desde cualquier origen
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
-header('Content-Type: application/json');
 require '../../config/db_connection.php';
 
 // Obtener el ID del curso de los parámetros GET
@@ -25,7 +21,7 @@ if ($table_check_stmt->num_rows === 0) {
 }
 
 // Obtener los comentarios del curso
-$comment_query = "SELECT id, user_id, comment, rating FROM comments WHERE course_id = ?";
+$comment_query = "SELECT user_id, comment, rating FROM comments WHERE course_id = ?";
 $comment_stmt = $conn->prepare($comment_query);
 $comment_stmt->bind_param('i', $course_id);
 $comment_stmt->execute();
@@ -41,5 +37,6 @@ echo json_encode($comments);
 // Cerrar declaraciones
 $comment_stmt->close();
 $table_check_stmt->close();
+// Cerrar la conexión
 $conn->close();
 ?>

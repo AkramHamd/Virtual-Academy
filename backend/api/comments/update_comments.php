@@ -1,9 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: http://localhost:3000'); // Permitir solicitudes desde localhost:3000
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS'); // Incluye PUT
-header('Access-Control-Allow-Headers: Content-Type, Authorization');
-header('Access-Control-Allow-Credentials: true'); // Permitir cookies o credenciales si las usas
-header('Content-Type: application/json');
 require '../../config/db_connection.php';
 
 session_start();

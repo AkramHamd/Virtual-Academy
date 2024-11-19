@@ -1,6 +1,7 @@
+// src/services/courseService.js
 import axios from 'axios';
 
-const baseURL = 'http://localhost/backend/api/';
+const baseURL = 'http://localhost/virtual-academy/backend/api/';
 
 const courseService = {
   getAllCourses: async () => {
@@ -73,24 +74,8 @@ const courseService = {
       console.error("Error fetching course modules:", error);
       return [];
     }
-  },
-
-  // NUEVO MÉTODO para obtener estudiantes de un curso
-  getStudentsByCourse: async (courseId) => {
-    try {
-      const response = await axios.get(
-        `${baseURL}courses/get_students_by_course.php`,
-        {
-          params: { course_id: courseId },
-          withCredentials: true
-        }
-      );
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching students:", error);
-      return [];
-    }
   }
 };
 
 export default courseService;
+
