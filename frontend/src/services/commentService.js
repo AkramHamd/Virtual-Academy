@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-const API_URL = "http://localhost/backend/api/comments";
-=======
 const API_URL = "http://localhost/Virtual-Academy/backend/api/comments";
->>>>>>> Stashed changes
 
 // Obtener comentarios por curso
 export const getCommentsByCourse = async (courseId) => {

@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-<<<<<<< Updated upstream
-const baseURL = 'http://localhost/backend/api/auth/';
-=======
 const baseURL = 'http://localhost/Virtual-Academy/backend/api/auth/';
->>>>>>> Stashed changes
 
 const authService = {
   login: async (email, password) => {

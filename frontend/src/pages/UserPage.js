@@ -17,7 +17,7 @@ export default function UserPage() {
       try {
         const response = await authService.getUserInfo();
         console.log('User info response:', response);
-        
+
         if (response?.id) {
           setUser(response);
           const coursesResponse = await courseService.getEnrolledCourses(response.id);
@@ -51,6 +51,14 @@ export default function UserPage() {
               <p><strong>Name:</strong> {user.name}</p>
               <p><strong>Email:</strong> {user.email}</p>
               <p><strong>Role:</strong> {user.role === 'admin' ? 'Admin' : 'Student'}</p>
+              {user.role === 'admin' && (
+                <button 
+                  className="admin-button" 
+                  onClick={() => window.location.href = '/admin'}
+                >
+                  Admin Page
+                </button>
+              )}
             </div>
           )}
         </section>

@@ -28,11 +28,7 @@ const RegisterPage = () => {
     if (!validateInput()) return;
 
     try {
-<<<<<<< Updated upstream
-      const response = await fetch('http://localhost/backend/api/auth/register.php', {
-=======
       const response = await fetch('http://localhost/Virtual-Academy/backend/api/auth/register.php', {
->>>>>>> Stashed changes
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),

@@ -7,12 +7,8 @@ header('Content-Type: application/json');
 
 require '../../config/db_connection.php';
 
-<<<<<<< Updated upstream
-session_start(); // Iniciar la sesión
-=======
 // Iniciar la sesión (si se utiliza la sesión para otras operaciones)
 session_start();
->>>>>>> Stashed changes
 
 // Verificar que el usuario esté autenticado como administrador
 if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
@@ -82,56 +78,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') {
 
         $insert_stmt->close();
         $course_check_stmt->close();
-<<<<<<< Updated upstream
-        $conn->close();
-        exit();
-    }
-
-    // Verificar si el usuario es administrador
-    $user_check_query = "SELECT role FROM users WHERE id = ?";
-    $user_check_stmt = $conn->prepare($user_check_query);
-    $user_check_stmt->bind_param('i', $user_id);
-    $user_check_stmt->execute();
-    $user_check_stmt->bind_result($user_role);
-    $user_check_stmt->fetch();
-
-    $user_check_stmt->close();
-
-    if ($user_role !== 'admin') {
-        echo json_encode(array("message" => "Only administrators can add comments."));
-        $conn->close();
-        exit();
-    }
-    
-    // Añadir el comentario a la base de datos
-    $insert_query = "INSERT INTO comments (user_id, course_id, comment, rating) VALUES (?, ?, ?, ?)";
-    $insert_stmt = $conn->prepare($insert_query);
-    
-    if (!$insert_stmt) {
-        echo json_encode(array("message" => "Error preparing statement: " . $conn->error));
-        $conn->close();
-        exit();
-    }
-
-    $insert_stmt->bind_param('iisi', $user_id, $course_id, $comment, $rating);
-    
-    if ($insert_stmt->execute()) {
-        $new_comment_id = $conn->insert_id; // Obtener el ID generado automáticamente
-        echo json_encode(array(
-            "message" => "Comment added successfully.",
-            "id" => $new_comment_id // Devolver el ID al frontend
-        ));
-=======
->>>>>>> Stashed changes
     } else {
         echo json_encode(array("message" => "Incomplete data."));
     }
 
-<<<<<<< Updated upstream
-    $insert_stmt->close();
-    $course_check_stmt->close();
-=======
->>>>>>> Stashed changes
 } else {
     echo json_encode(array("message" => "Only administrators can add comments."));
 }

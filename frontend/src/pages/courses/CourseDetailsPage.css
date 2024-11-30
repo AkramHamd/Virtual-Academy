@@ -200,12 +200,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< Updated upstream
-=======
   text-align: center;
   width: 100%;
   max-width: 600px; /* Limita el ancho del comentario */
->>>>>>> Stashed changes
 }
 
 .comment-item.editing {
@@ -333,8 +330,6 @@
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
-<<<<<<< Updated upstream
-=======
 .comment-section {
   position: relative; /* Asegura que todo esté dentro del contenedor */
   padding-bottom: 40px; /* Da espacio extra en la parte inferior para el botón */
@@ -381,4 +376,3 @@
   gap: 20px;               /* Espaciado entre comentarios */
 }
 
->>>>>>> Stashed changes
