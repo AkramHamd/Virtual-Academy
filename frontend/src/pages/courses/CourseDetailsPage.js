@@ -136,6 +136,7 @@ export default function CourseDetailsPage() {
             </div>
 
             {/* Botón para ver/ocultar los comentarios */}
+<<<<<<< Updated upstream
             <button onClick={() => setShowComments(!showComments)} className="toggle-comments-btn">
               {showComments ? 'Hide Comments' : 'View Comments'}
             </button>
@@ -143,12 +144,28 @@ export default function CourseDetailsPage() {
             {/* Mostrar los comentarios si está activado el estado */}
             {showComments && (
               <div>
+=======
+            <div className="toggle-comments-btn-container">
+              <button onClick={() => setShowComments(!showComments)} className="toggle-comments-btn">
+                {showComments ? 'Hide Comments' : 'View Comments'}
+              </button>
+            </div>
+
+            {/* Mostrar los comentarios si está activado el estado */}
+            <div className={`comments-container ${showComments ? 'show' : ''}`}>
+              {showComments && (
+>>>>>>> Stashed changes
                 <CommentManager
                   courseId={id}
                   onEditComment={handleEditComment} // Función para editar un comentario
                 />
+<<<<<<< Updated upstream
               </div>
             )}
+=======
+              )}
+            </div>
+>>>>>>> Stashed changes
 
             {/* Formulario para editar el comentario */}
             {isEditing && (

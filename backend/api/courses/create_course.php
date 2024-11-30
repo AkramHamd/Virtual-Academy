@@ -1,24 +1,31 @@
 <?php
 require '../../config/db_connection.php';
 
-session_start(); // Start the session
+session_start(); // Iniciar la sesión
 
-header('Content-Type: application/json'); // Set the header to return JSON responses
+header('Content-Type: application/json'); // Establecer el tipo de contenido como JSON
 
 try {
-    // Check if the user is logged in and is an admin
+    // Verificar si el usuario está logueado y tiene rol de admin
     if (isset($_SESSION['user_id']) && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
         
-        // Get the data from the POST request
+        // Obtener los datos del cuerpo de la solicitud
         $data = json_decode(file_get_contents("php://input"));
 
-        // Validate input data (title, description, and category must not be empty)
-        if (!empty($data->title) && !empty($data->description) && !empty($data->category)) {
+        // Validar que los datos esenciales están presentes
+        if (!empty($data->title) && !empty($data->description) && !empty($data->category) && !empty($data->cover_image_url)) {
             $title = $data->title;
             $description = $data->description;
             $category = $data->category;
+            $cover_image_url = $data->cover_image_url; // Nuevo campo para la URL de la imagen de portada
 
-            // Check if the course title already exists
+            // Validar la URL de la imagen de portada
+            if (!filter_var($cover_image_url, FILTER_VALIDATE_URL)) {
+                echo json_encode(["message" => "Invalid cover image URL."]);
+                exit;
+            }
+
+            // Verificar si el título del curso ya existe
             $name_check_query = "SELECT id FROM courses WHERE title = ?";
             $name_check_stmt = $conn->prepare($name_check_query);
             $name_check_stmt->bind_param('s', $title);
@@ -26,18 +33,18 @@ try {
             $name_check_stmt->store_result();
 
             if ($name_check_stmt->num_rows > 0) {
-                // Course title already exists
+                // El título del curso ya está en uso
                 echo json_encode(array("message" => "Course title already in use."));
             } else {
-                // Insert the new course into the database
-                $insert_query = "INSERT INTO courses (title, description, category) VALUES (?, ?, ?)";
+                // Insertar el nuevo curso en la base de datos
+                $insert_query = "INSERT INTO courses (title, description, category, cover_image_url) VALUES (?, ?, ?, ?)";
                 $insert_stmt = $conn->prepare($insert_query);
-                
+
                 if (!$insert_stmt) {
                     throw new Exception("Error preparing statement: " . $conn->error);
                 }
 
-                $insert_stmt->bind_param('sss', $title, $description, $category);
+                $insert_stmt->bind_param('ssss', $title, $description, $category, $cover_image_url);
 
                 if ($insert_stmt->execute()) {
                     echo json_encode(array("message" => "Course created successfully."));
@@ -45,28 +52,28 @@ try {
                     throw new Exception("Error creating course: " . $insert_stmt->error);
                 }
 
-                // Close statement
+                // Cerrar la consulta
                 $insert_stmt->close();
             }
 
-            // Close the name check statement
+            // Cerrar la consulta de verificación de nombre
             $name_check_stmt->close();
 
         } else {
-            // Input validation failed
-            echo json_encode(array("message" => "Incomplete input data. Please provide title, description, and category."));
+            // Si falta algún dato en la solicitud
+            echo json_encode(array("message" => "Incomplete input data. Please provide title, description, category, and cover_image_url."));
         }
 
     } else {
-        // User is not logged in or not an admin
+        // Si el usuario no está logueado o no tiene el rol de admin
         echo json_encode(array("message" => "Access denied. Admin privileges required."));
     }
 
 } catch (Exception $e) {
-    // Catch any unexpected errors and return a JSON error message
+    // Capturar cualquier error inesperado y devolver el mensaje de error
     echo json_encode(array("message" => "An error occurred: " . $e->getMessage()));
 } finally {
-    // Close the database connection
+    // Cerrar la conexión a la base de datos
     $conn->close();
 }
 ?>

@@ -1,6 +1,10 @@
 import axios from 'axios';
 
+<<<<<<< Updated upstream
 const baseURL = 'http://localhost/backend/api/';
+=======
+const baseURL = 'http://localhost/Virtual-Academy/backend/api/';
+>>>>>>> Stashed changes
 
 const courseService = {
   getAllCourses: async () => {

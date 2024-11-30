@@ -200,6 +200,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< Updated upstream
+=======
+  text-align: center;
+  width: 100%;
+  max-width: 600px; /* Limita el ancho del comentario */
+>>>>>>> Stashed changes
 }
 
 .comment-item.editing {
@@ -327,3 +333,52 @@
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
+<<<<<<< Updated upstream
+=======
+.comment-section {
+  position: relative; /* Asegura que todo esté dentro del contenedor */
+  padding-bottom: 40px; /* Da espacio extra en la parte inferior para el botón */
+}
+
+.toggle-comments-btn-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px; /* Espacio entre el botón y los comentarios */
+}
+
+.toggle-comments-btn {
+  background-color: #e50914;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggle-comments-btn:hover {
+  background-color: #f40612;
+}
+
+/* Centrar la sección de comentarios en la página */
+.comment-section {
+  display: flex;
+  justify-content: center; /* Centra el contenedor de los comentarios */
+  align-items: center;     /* Alinea verticalmente */
+  min-height: 100vh;       /* Asegura que ocupe toda la altura de la página */
+  padding: 20px;           /* Añadir algo de espacio alrededor */
+}
+
+/* Contenedor que envuelve todos los comentarios */
+.comments-container {
+  display: flex;
+  justify-content: center; /* Centra los comentarios dentro del contenedor */
+  flex-direction: column;
+  align-items: center;     /* Centra los comentarios verticalmente */
+  width: 100%;             /* Ocupa todo el ancho disponible */
+  max-width: 900px;        /* Máximo ancho para el contenedor */
+  gap: 20px;               /* Espaciado entre comentarios */
+}
+
+>>>>>>> Stashed changes

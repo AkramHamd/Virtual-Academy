@@ -19,7 +19,11 @@ virtual-academy/
 │   │   │   ├── create_module.php         # Create a module in a course
 │   │   │   ├── delete_module.php         # Delete a module in a course
 │   │   │   ├── update_module.php         # Update a module in a course
+<<<<<<< Updated upstream
 │   │   │   └── get_modules_by_course.php # Get all modules for a specific course
+=======
+│   │   │   └── get_modules.php 			# Get all modules for a specific course
+>>>>>>> Stashed changes
 │   │   └── comments/                     # Comments-related endpoints
 │   │       ├── add_comment.php           # Add comment and rating to a course (Admin)
 │   │       ├── get_comments.php          # Get all comments for a course

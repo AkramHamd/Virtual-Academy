@@ -9,7 +9,11 @@ const ManageComments = ({ courseId }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
+<<<<<<< Updated upstream
         const response = await axios.get(`http://localhost/backend/api/comments.php?course_id=${courseId}`);
+=======
+        const response = await axios.get(`http://localhost/Virtual-Academy/backend/api/comments.php?course_id=${courseId}`);
+>>>>>>> Stashed changes
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -27,7 +31,11 @@ const ManageComments = ({ courseId }) => {
     }
 
     try {
+<<<<<<< Updated upstream
       const response = await axios.post('http://localhost/backend/api/comments.php', { comment: newComment, course_id: courseId });
+=======
+      const response = await axios.post('http://localhost/Virtual-Academy/backend/api/comments.php', { comment: newComment, course_id: courseId });
+>>>>>>> Stashed changes
       setComments([...comments, response.data]);
       setNewComment('');
       alert('Comentario agregado con éxito');
@@ -40,7 +48,11 @@ const ManageComments = ({ courseId }) => {
   // Eliminar un comentario
   const handleDeleteComment = async (id) => {
     try {
+<<<<<<< Updated upstream
       await axios.delete(`http://localhost/backend/api/comments.php?id=${id}`);
+=======
+      await axios.delete(`http://localhost/Virtual-Academy/backend/api/comments.php?id=${id}`);
+>>>>>>> Stashed changes
       setComments(comments.filter(comment => comment.id !== id));
       alert('Comentario eliminado con éxito');
     } catch (error) {
@@ -58,7 +70,11 @@ const ManageComments = ({ courseId }) => {
     }
 
     try {
+<<<<<<< Updated upstream
       const response = await axios.put(`http://localhost/backend/api/comments.php?id=${id}`, { comment: updatedComment });
+=======
+      const response = await axios.put(`http://localhost/Virtual-Academy/backend/api/comments.php?id=${id}`, { comment: updatedComment });
+>>>>>>> Stashed changes
       setComments(comments.map(comment => (comment.id === id ? response.data : comment)));
       alert('Comentario actualizado con éxito');
     } catch (error) {
