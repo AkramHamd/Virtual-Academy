@@ -162,6 +162,14 @@ export default function CourseDetailsPage() {
                       <div className="no-video-message">No video available for this module</div>
                     )}
                   </div>
+                    {currentModule.support_material_url && (
+                      <button
+                        className="support-material-btn"
+                        onClick={() => window.open(currentModule.support_material_url, '_blank')}
+                      >
+                        View Support Material
+                      </button>
+                    )}
                 </>
               )}
             </div>
