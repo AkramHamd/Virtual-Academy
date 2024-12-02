@@ -6,6 +6,7 @@ import {
   deleteComment,
 } from "../services/commentService";
 import courseService from "../services/courseService";
+import authService from "../services/authService";
 import "./CommentManager.css"; // Archivo CSS externo
 
 const CommentManager = ({ courseId }) => {
@@ -14,10 +15,21 @@ const CommentManager = ({ courseId }) => {
   const [newComment, setNewComment] = useState({ comment: "", rating: "", user_id: "" });
   const [editingComment, setEditingComment] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null);
+
 
   useEffect(() => {
     fetchComments();
     fetchStudents();
+    const fetchUserInfo = async () => {
+      try {
+        const userData = await authService.getUserInfo();
+        setUser(userData);
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    };
+    fetchUserInfo();
   }, [courseId]);
 
   const fetchComments = async () => {
@@ -106,38 +118,40 @@ const CommentManager = ({ courseId }) => {
         <p>Loading comments...</p>
       ) : (
         <>
-          <div className="add-comment-section">
-            <select
-              value={newComment.user_id}
-              onChange={(e) =>
-                setNewComment((prev) => ({ ...prev, user_id: e.target.value }))
-              }
-            >
-              <option value="">Select Student</option>
-              {students.map((student) => (
-                <option key={student.id} value={student.id}>
-                  {student.name}
-                </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              placeholder="Write a comment..."
-              value={newComment.comment}
-              onChange={(e) =>
-                setNewComment((prev) => ({ ...prev, comment: e.target.value }))
-              }
-            />
-            <input
-              type="number"
-              placeholder="Rating (1-10)"
-              value={newComment.rating}
-              onChange={(e) =>
-                setNewComment((prev) => ({ ...prev, rating: e.target.value }))
-              }
-            />
-            <button onClick={handleAddComment}>Add Comment</button>
-          </div>
+          {user?.role === "admin" && (
+            <div className="add-comment-section">
+              <select
+                value={newComment.user_id}
+                onChange={(e) =>
+                  setNewComment((prev) => ({ ...prev, user_id: e.target.value }))
+                }
+              >
+                <option value="">Select Student</option>
+                {students.map((student) => (
+                  <option key={student.id} value={student.id}>
+                    {student.name}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="text"
+                placeholder="Write a comment..."
+                value={newComment.comment}
+                onChange={(e) =>
+                  setNewComment((prev) => ({ ...prev, comment: e.target.value }))
+                }
+              />
+              <input
+                type="number"
+                placeholder="Rating (1-10)"
+                value={newComment.rating}
+                onChange={(e) =>
+                  setNewComment((prev) => ({ ...prev, rating: e.target.value }))
+                }
+              />
+              <button onClick={handleAddComment}>Add Comment</button>
+            </div>
+          )}
 
           <ul className="comments-list">
             {comments.map((comment) => (
@@ -175,8 +189,12 @@ const CommentManager = ({ courseId }) => {
                     <p>{comment.comment}</p>
                     <p>For: {comment.nameuser}</p>
                     <p>Rating: {comment.rating}</p>
-                    <button onClick={() => handleEditClick(comment)}>Edit</button>
-                    <button onClick={() => handleDeleteComment(comment.id)}>Delete</button>
+                    {user?.role === "admin" && (
+                      <button onClick={() => handleEditClick(comment)}>Edit</button>
+                    )}
+                    {user?.role === "admin" && (
+                      <button onClick={() => handleDeleteComment(comment.id)}>Delete</button>
+                    )}
                   </div>
                 )}
               </li>

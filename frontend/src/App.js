@@ -21,7 +21,6 @@ function App() {
                 <Route path="/user" element={<UserPage />} />
                 <Route path="/courses" element={<CourseCatalogPage />} />
                 <Route path="/courses/:id" element={<CourseDetailsPage />} />
-                <Route path="/admin/*" element={<AdminLayout />} />
                 <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
             </Routes>
         </Router>

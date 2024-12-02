@@ -46,6 +46,8 @@ export default function CourseCard({ course, isEnrolled = false }) {
       )}
       <div className="course-details">
         <h3>{course.title}</h3>
+        <h4>{course.category}</h4>
+        <p>{course.description}</p>
         {isEnrolled ? (
           <button 
             onClick={handleAccess}
@@ -61,3 +63,27 @@ export default function CourseCard({ course, isEnrolled = false }) {
     </div>
   );
 }
+
+/*
+          <section className="admin-course-list">
+          <h3>All Courses</h3>
+          {courses.length > 0 ? (
+            <div className="course-grid">
+              {courses.map((course) => (
+                <div className="course-item" key={course.id}>
+                  <img
+                    src={course.cover_image_url}
+                    alt={course.title}
+                    className="course-cover"
+                  />
+                  <h4>{course.title}</h4>
+                  <p>{course.category}</p>
+                  <p>{course.description}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No courses available.</p>
+          )}
+        </section>
+*/

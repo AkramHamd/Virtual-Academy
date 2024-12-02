@@ -10,12 +10,17 @@ export default function CourseCatalogPage() {
   const { user } = useAuth();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);  // Error state
 
   useEffect(() => {
     const fetchCourses = async () => {
       if (user) { // Only fetch courses if the user is authenticated
-        const data = await courseService.getAllCourses();
-        if (data) setCourses(data);
+        try {
+          const data = await courseService.getAllCourses();
+          if (data) setCourses(data);
+        } catch (error) {
+          setError('Failed to load courses. Please try again later.');
+        }
       }
       setLoading(false);
     };
@@ -29,6 +34,8 @@ export default function CourseCatalogPage() {
         <h1 className="catalog-title">Available Courses</h1>
         {loading ? (
           <p className="loading-text">Loading courses...</p>
+        ) : error ? (  // Show error message if there's an error
+          <p className="error-text">{error}</p>
         ) : !user ? (
           <p className="error-text">Please sign in to view available courses.</p>
         ) : (

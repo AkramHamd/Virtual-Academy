@@ -359,20 +359,91 @@
 /* Centrar la sección de comentarios en la página */
 .comment-section {
   display: flex;
-  justify-content: center; /* Centra el contenedor de los comentarios */
-  align-items: center;     /* Alinea verticalmente */
-  min-height: 100vh;       /* Asegura que ocupe toda la altura de la página */
-  padding: 20px;           /* Añadir algo de espacio alrededor */
+  justify-content: center; 
+  align-items: center;     
+  min-height: 100vh;       
+  padding: 20px;          
 }
 
 /* Contenedor que envuelve todos los comentarios */
 .comments-container {
   display: flex;
-  justify-content: center; /* Centra los comentarios dentro del contenedor */
+  justify-content: center; 
   flex-direction: column;
-  align-items: center;     /* Centra los comentarios verticalmente */
-  width: 100%;             /* Ocupa todo el ancho disponible */
-  max-width: 900px;        /* Máximo ancho para el contenedor */
-  gap: 20px;               /* Espaciado entre comentarios */
+  align-items: center;     
+  width: 100%;             
+  max-width: 900px;        
+  gap: 20px;               
+}
+
+/* Botón para crear un módulo */
+.create-module-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.create-module-btn:hover {
+  background-color: #45a049;
+}
+
+/* Formulario para crear un módulo */
+.create-module-form {
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9; 
+  width: 300px; 
+  float: left; 
+  max-height: 220px;
+  overflow: auto;
+}
+
+.create-module-form input {
+  display: block;
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-module-form button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.create-module-form button:hover {
+  background-color: #0b7dda;
+}
+
+/* Botón para eliminar un módulo */
+.delete-module-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-module-btn:hover {
+  background-color: #d32f2f;
 }
 
