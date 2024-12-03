@@ -11,6 +11,7 @@ import CourseDetailsPage from './pages/courses/CourseDetailsPage';
 import AdminLayout from './layouts/AdminLayout';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 
+
 function App() {
     return (
         <Router>
