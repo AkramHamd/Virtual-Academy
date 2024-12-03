@@ -7,7 +7,7 @@ import {
 } from "../services/commentService";
 import courseService from "../services/courseService";
 import authService from "../services/authService";
-import "./CommentManager.css"; // Archivo CSS externo
+import "./CommentManager.css"; 
 
 const CommentManager = ({ courseId }) => {
   const [comments, setComments] = useState([]);
@@ -55,7 +55,7 @@ const CommentManager = ({ courseId }) => {
 
   const handleAddComment = async () => {
     // Verificar que el comentario, la calificación y el estudiante están presentes
-    if (!newComment.comment.trim() || !newComment.rating || !newComment.user_id) {
+    if (!newComment.comment.trim() || !newComment.rating) {
       alert("Please fill in all fields.");
       return;
     }
@@ -64,14 +64,15 @@ const CommentManager = ({ courseId }) => {
       return;
     }
 
-    // Mostrar en consola el user_id (studentId) que se está enviando
-    console.log("user_id being sent:", newComment.user_id);
-
     try {
       // Asegurarse de que el studentId correcto se está pasando a la API
-      const response = await addComment({ ...newComment, course_id: courseId });
+      const response = await addComment({
+        ...newComment,
+        user_id: user.id, // Asignar el ID del usuario autenticado
+        course_id: courseId,
+      });
       alert(response.message);
-      setNewComment({ comment: "", rating: "", user_id: "" }); // Limpiar formulario
+      setNewComment({ comment: "", rating: "" }); // Limpiar formulario
       fetchComments();
     } catch (error) {
       console.error("Error adding comment:", error);
@@ -118,21 +119,8 @@ const CommentManager = ({ courseId }) => {
         <p>Loading comments...</p>
       ) : (
         <>
-          {user?.role === "admin" && (
             <div className="add-comment-section">
-              <select
-                value={newComment.user_id}
-                onChange={(e) =>
-                  setNewComment((prev) => ({ ...prev, user_id: e.target.value }))
-                }
-              >
-                <option value="">Select Student</option>
-                {students.map((student) => (
-                  <option key={student.id} value={student.id}>
-                    {student.name}
-                  </option>
-                ))}
-              </select>
+              
               <input
                 type="text"
                 placeholder="Write a comment..."
@@ -151,7 +139,6 @@ const CommentManager = ({ courseId }) => {
               />
               <button onClick={handleAddComment}>Add Comment</button>
             </div>
-          )}
 
           <ul className="comments-list">
             {comments.map((comment) => (
@@ -187,7 +174,7 @@ const CommentManager = ({ courseId }) => {
                 ) : (
                   <div className="comment-view">
                     <p>{comment.comment}</p>
-                    <p>For: {comment.nameuser}</p>
+                    <p>by: {comment.nameuser}</p>
                     <p>Rating: {comment.rating}</p>
                     {user?.role === "admin" && (
                       <button onClick={() => handleEditClick(comment)}>Edit</button>
