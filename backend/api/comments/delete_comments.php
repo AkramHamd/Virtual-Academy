@@ -1,6 +1,15 @@
 <?php
 require '../../config/db_connection.php';
 
+
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit(0); // Return 200 OK with the CORS headers for preflight
+}
+
 session_start(); 
 header('Content-Type: application/json'); 
 

@@ -1,5 +1,6 @@
 virtual-academy/
 │
+├── README.md                             # Project overview and setup instructions
 ├── backend/                              # Backend files (PHP and MySQL)
 │   ├── api/                              # API endpoints
 │   │   ├── auth/                         # User authentication-related endpoints
@@ -7,62 +8,119 @@ virtual-academy/
 │   │   │   ├── logout.php                # Logout endpoint
 │   │   │   ├── register.php              # Registration endpoint
 │   │   │   └── user.php                  # Get current user details
+│   │   ├── comments/                     # Comments-related endpoints
+│   │   │   ├── add_comment.php           # Add comment to a course
+│   │   │   ├── delete_comments.php       # Delete comments
+│   │   │   ├── get_comments.php          # Get all comments for a course
+│   │   │   ├── get_comments_by_course.php # Get comments by course 
+│   │   │   └── update_comments.php       # Update existing comments
 │   │   ├── courses/                      # Course-related endpoints
 │   │   │   ├── create_course.php         # Create new course (Admin)
-│   │   │   ├── update_course.php         # Update existing course (Admin)
 │   │   │   ├── delete_course.php         # Delete course (Admin)
+│   │   │   ├── get_course_by_id.php      # Get details of a specific course
+│   │   │   ├── get_course_modules.php    # Get modules for a specific course
 │   │   │   ├── get_courses.php           # Get list of all courses
-│   │   │   └── get_course_by_id.php      # Get details of a specific course
+│   │   │   ├── get_courses_by_id.php     # Get courses by ID
+│   │   │   ├── get_students_by_course.php # Get students enrolled in a course
+│   │   │   └── update_course.php         # Update existing course (Admin)
 │   │   ├── enrollments/                  # Enrollment-related endpoints
-│   │   │   └── enroll.php                # Enroll a user in a course
-│   │   ├── modules/                      # Module-related endpoints
-│   │   │   ├── create_module.php         # Create a module in a course
-│   │   │   ├── delete_module.php         # Delete a module in a course
-│   │   │   ├── update_module.php         # Update a module in a course
-<<<<<<< Updated upstream
-│   │   │   └── get_modules_by_course.php # Get all modules for a specific course
-=======
-│   │   │   └── get_modules.php 			# Get all modules for a specific course
->>>>>>> Stashed changes
-│   │   └── comments/                     # Comments-related endpoints
-│   │       ├── add_comment.php           # Add comment and rating to a course (Admin)
-│   │       ├── get_comments.php          # Get all comments for a course
-│   │       ├── get_comments_by_course.php # Get comments by course 
-│   │       ├── update_comments.php       # Update existing course (Admin)
-│   │       └── delete_comments.php       # Delete comments (Admin)
+│   │   │   ├── enroll.php                # Enroll a user in a course
+│   │   │   └── get_enrolled_courses.php  # Get courses a user is enrolled in
+│   │   └── modules/                      # Module-related endpoints
+│   │       ├── create_module.php         # Create a module in a course
+│   │       └── delete_module.php         # Delete a module in a course
+│   ├── composer.json                     # Composer dependencies
+│   ├── composer.lock                     # Locked versions of dependencies
 │   ├── config/                           # Configuration files
 │   │   └── db_connection.php             # Database connection file
-│   ├── sql/                              # Database schema and migrations
-│   │   └── schema.sql                    # SQL script to create initial tables
-│   ├── utils/                            # Utility files (helpers, etc.)
-│   │   └── functions.php                 # Helper functions
-│   └── index.php                         # Main entry point for the backend
-│
+│   └── tests/                            # Test files
+│       ├── AuthTest.php                  # Tests for authentication
+│       └── CourseTest.php                # Tests for courses
+├── database.txt                          # Database schema and setup instructions
 ├── frontend/                             # Frontend files (React)
+│   ├── package-lock.json                 # Lock file for npm dependencies
+│   ├── package.json                      # Frontend dependencies
 │   ├── public/                           # Public files
+│   │   ├── favicon.ico                   # Favicon for the app
 │   │   ├── index.html                    # HTML entry point
-│   │   └── favicon.ico                   # Favicon for the app
-│   ├── src/                              # React source files
-│   │   ├── components/                   # Reusable React components
-│   │   │   ├── CourseCard.js             # Course card component
-│   │   │   ├── Navbar.js                 # Navigation bar component
-│   │   │   └── CommentForm.js            # Comment form component
-│   │   ├── pages/                        # Pages for routing
-│   │   │   ├── HomePage.js               # Home page
-│   │   │   ├── CourseCatalogPage.js      # Course catalog page
-│   │   │   ├── CourseDetailsPage.js      # Course details page
-│   │   │   ├── AdminDashboardPage.js     # Admin dashboard
-│   │   │   └── LoginPage.js              # Login page
-│   │   ├── services/                     # API services (fetch functions)
-│   │   │   ├── authService.js            # Service for user authentication (login, register)
-│   │   │   ├── courseService.js          # Service for courses (fetching, creating, updating)
-│   │   │   └── enrollmentService.js      # Service for course enrollments
-│   │   ├── App.js                        # Main React component
-│   │   ├── index.js                      # React entry point
-│   │   ├── App.css                       # Global styles
-│   │   └── routes.js                     # Application routing
-│   └── package.json                      # Frontend dependencies
-│
-├── README.md                             # Project overview and setup instructions
-├── .gitignore                            # Git ignore file
-└── LICENSE                               # License file
+│   │   ├── logo192.png                   # Logo for PWA
+│   │   ├── logo512.png                   # Logo for PWA
+│   │   ├── manifest.json                 # Web app manifest
+│   │   └── robots.txt                    # Robots.txt for SEO
+│   └── src/                              # React source files
+│       ├── App.js                        # Main React component
+│       ├── assets                         # Assets for the application
+│       │   ├── css                        # CSS files
+│       │   │   ├── App.css                # Global styles
+│       │   │   └── index.css              # Index styles
+│       │   └── images                     # Image assets
+│       │       ├── background.webp        # Background image
+│       │       ├── default-cover.jpg      # Default cover image
+│       │       └── logo.svg               # Logo image
+│       ├── components                     # Reusable React components
+│       │   ├── CommentManager.css         # Styles for Comment Manager
+│       │   ├── CommentManager.js          # Comment Manager component
+│       │   ├── cards                      # Card components
+│       │   │   ├── CourseCard.css         # Styles for Course Card
+│       │   │   ├── CourseCard.js          # Course Card component
+│       │   │   ├── HeroSection.css        # Styles for Hero Section
+│       │   │   ├── HeroSection.js         # Hero Section component
+│       │   │   └── ProfileCard.js         # Profile Card component
+│       │   ├── common                     # Common components
+│       │   │   ├── Footer.js              # Footer component
+│       │   │   ├── Navbar.js              # Navigation bar component
+│       │   │   ├── NavbarStyles.css        # Styles for Navbar
+│       │   │   └── Sidebar.js             # Sidebar component
+│       │   ├── forms                      # Form components
+│       │   │   ├── FormStyles.js          # Styles for forms
+│       │   │   ├── LoginForm.js           # Login form component
+│       │   │   └── RegisterForm.js        # Registration form component
+│       │   └── modals                     # Modal components
+│       │       └── ErrorModal.js          # Error modal component
+│       ├── contexts                       # Contexts for state management
+│       │   ├── AuthContext.js             # Authentication context
+│       │   └── CourseContext.js           # Course context
+│       ├── hooks                          # Custom hooks
+│       │   └── useAuth.js                 # Hook for authentication
+│       ├── index.js                       # React entry point
+│       ├── layouts                        # Layout components
+│       │   ├── AdminLayout.css            # Styles for Admin Layout
+│       │   ├── AdminLayout.js             # Admin Layout component
+│       │   ├── AuthLayout.js              # Auth Layout component
+│       │   └── DefaultLayout.js           # Default Layout component
+│       ├── pages                          # Pages for routing
+│       │   ├── HomePage.js                # Home page component
+│       │   ├── LandingPage.css            # Styles for Landing Page
+│       │   ├── LandingPage.js             # Landing Page component
+│       │   ├── UserPage.css               # Styles for User Page
+│       │   ├── UserPage.js                # User Page component
+│       │   ├── admin                       # Admin pages
+│       │   │   ├── AdminDashboardPage.css  # Styles for Admin Dashboard
+│       │   │   ├── AdminDashboardPage.js   # Admin Dashboard component
+│       │   │   ├── ManageComments.css      # Styles for Manage Comments
+│       │   │   └── ManageComments.js       # Manage Comments component
+│       │   ├── auth                        # Authentication pages
+│       │   │   ├── LoginPage.js            # Login page component
+│       │   │   ├── RegisterPage.css        # Styles for Register Page
+│       │   │   └── RegisterPage.js         # Registration page component
+│       │   └── courses                     # Course-related pages
+│       │       ├── CourseCatalogPage.css   # Styles for Course Catalog
+│       │       ├── CourseCatalogPage.js    # Course Catalog page component
+│       │       ├── CourseDetailsPage.css    # Styles for Course Details
+│       │       └── CourseDetailsPage.js     # Course Details page component
+│       ├── reportWebVitals.js              # Web vitals reporting
+│       ├── services                        # API services
+│       │   ├── authService.js              # Service for user authentication
+│       │   ├── commentService.js           # Service for comments
+│       │   ├── courseService.js            # Service for courses
+│       │   └── enrollmentService.js        # Service for enrollments
+│       ├── setupTests.js                   # Setup for tests
+│       ├── styles                          # Global styles
+│       └── utils                           # Utility functions
+│           ├── fetchWrapper.js             # Fetch wrapper for API calls
+│           └── validation.js               # Validation functions
+├── frontend.txt                           # Frontend setup instructions
+├── roadmap.md                             # Project roadmap
+├── structure.txt                          # Project structure overview
+└── tmp                                    # Temporary files
+    └── admin_cookies.txt                 # Admin cookies for testing
