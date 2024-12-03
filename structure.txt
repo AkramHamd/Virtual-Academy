@@ -9,7 +9,7 @@ virtual-academy/
 │   │   │   ├── register.php              # Registration endpoint
 │   │   │   └── user.php                  # Get current user details
 │   │   ├── comments/                     # Comments-related endpoints
-│   │   │   ├── add_comment.php           # Add comment to a course
+│   │   │   ├── add_comment.php           # Add comment to a specific course
 │   │   │   ├── delete_comments.php       # Delete comments
 │   │   │   ├── get_comments.php          # Get all comments for a course
 │   │   │   ├── get_comments_by_course.php # Get comments by course 
@@ -122,5 +122,5 @@ virtual-academy/
 ├── frontend.txt                           # Frontend setup instructions
 ├── roadmap.md                             # Project roadmap
 ├── structure.txt                          # Project structure overview
-└── tmp                                    # Temporary files
+└── tmp                                    # Temporary files (not pushed to github)
     └── admin_cookies.txt                 # Admin cookies for testing
