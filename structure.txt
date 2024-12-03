@@ -46,18 +46,16 @@ virtual-academy/
 │   │   ├── components/                   # Reusable React components
 │   │   │   ├── CourseCard.js             # Course card component
 │   │   │   ├── Navbar.js                 # Navigation bar component
-│   │   │   ├── CommentForm.js            # Comment form component
-│   │   │   └── ModuleManager.js          # Component for managing modules (add, delete, reorder)
+│   │   │   └── CommentForm.js            # Comment form component
 │   │   ├── pages/                        # Pages for routing
 │   │   │   ├── HomePage.js               # Home page
 │   │   │   ├── CourseCatalogPage.js      # Course catalog page
-│   │   │   ├── CourseDetailsPage.js      # Course details page (integrates ModuleManager)
+│   │   │   ├── CourseDetailsPage.js      # Course details page
 │   │   │   ├── AdminDashboardPage.js     # Admin dashboard
 │   │   │   └── LoginPage.js              # Login page
 │   │   ├── services/                     # API services (fetch functions)
 │   │   │   ├── authService.js            # Service for user authentication (login, register)
 │   │   │   ├── courseService.js          # Service for courses (fetching, creating, updating)
-│   │   │   ├── moduleService.js          # Service for managing modules
 │   │   │   └── enrollmentService.js      # Service for course enrollments
 │   │   ├── App.js                        # Main React component
 │   │   ├── index.js                      # React entry point
