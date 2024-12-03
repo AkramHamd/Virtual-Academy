@@ -1,4 +1,3 @@
-// src/services/courseService.js
 import axios from 'axios';
 
 const baseURL = 'http://localhost/Virtual-Academy/backend/api/';
@@ -131,4 +130,3 @@ const courseService = {
 };
 
 export default courseService;
-

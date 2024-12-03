@@ -1,4 +1,8 @@
 <?php
+header('Access-Control-Allow-Origin: *'); // Permite solicitudes desde cualquier origen
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Content-Type: application/json');
 require '../../config/db_connection.php';
 
 // Obtener el ID del curso de los parámetros GET
@@ -37,6 +41,5 @@ echo json_encode($comments);
 // Cerrar declaraciones
 $comment_stmt->close();
 $table_check_stmt->close();
-// Cerrar la conexión
 $conn->close();
 ?>

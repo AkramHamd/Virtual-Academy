@@ -4,6 +4,7 @@ import courseService from '../../services/courseService';
 import authService from '../../services/authService';
 import Navbar from '../../components/common/Navbar';
 import './CourseDetailsPage.css';
+import CommentManager from '../../components/CommentManager'; // Importar el componente para gestionar comentarios
 
 export default function CourseDetailsPage() {
   const { id } = useParams();
@@ -25,17 +26,14 @@ export default function CourseDetailsPage() {
     const fetchCourseData = async () => {
       try {
         const courseData = await courseService.getCourseById(id);
-        console.log('Course data:', courseData);
         setCourse(courseData);
 
         const enrolledCourses = await courseService.getEnrolledCourses();
-        console.log('Enrolled courses:', enrolledCourses);
         const enrolled = enrolledCourses.some(course => course.id === parseInt(id));
         setIsEnrolled(enrolled);
 
         if (enrolled) {
           const modulesData = await courseService.getCourseModules(id);
-          console.log('Modules data:', modulesData);
           setModules(modulesData);
           if (modulesData.length > 0) {
             setCurrentModule(modulesData[0]);
@@ -104,7 +102,6 @@ export default function CourseDetailsPage() {
       const response = await courseService.enrollInCourse(id);
       if (response.message === "Enrollment successful.") {
         setIsEnrolled(true);
-        // Fetch modules after successful enrollment
         const modulesData = await courseService.getCourseModules(id);
         setModules(modulesData);
         if (modulesData.length > 0) {
@@ -113,6 +110,21 @@ export default function CourseDetailsPage() {
       }
     } catch (error) {
       console.error("Enrollment error:", error);
+    }
+  };
+
+  const handleEditComment = (comment) => {
+    setIsEditing(true);
+    setEditedComment(comment.text);
+    setCommentIdToEdit(comment.id);
+  };
+
+  const handleConfirmEdit = async () => {
+    try {
+      await courseService.updateComment(commentIdToEdit, editedComment); // Llamada al servicio para actualizar el comentario
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error updating comment:', error);
     }
   };
 
