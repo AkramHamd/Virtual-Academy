@@ -1,5 +1,5 @@
-// src/pages/UserPage.js
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 import authService from '../services/authService';
 import courseService from '../services/courseService';
 import Navbar from '../components/common/Navbar';
@@ -11,13 +11,14 @@ export default function UserPage() {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Inicializa el hook useNavigate
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await authService.getUserInfo();
         console.log('User info response:', response);
-        
+
         if (response?.id) {
           setUser(response);
           const coursesResponse = await courseService.getEnrolledCourses(response.id);
@@ -36,6 +37,10 @@ export default function UserPage() {
     fetchUserData();
   }, []);
 
+  const handleAdminClick = () => {
+    navigate('/admin-dashboard'); // Redirige directamente a AdminDashboard
+  };
+
   if (loading) return <p>Loading user info...</p>;
   if (error) return <p className="error-message">{error}</p>;
 
@@ -51,6 +56,14 @@ export default function UserPage() {
               <p><strong>Name:</strong> {user.name}</p>
               <p><strong>Email:</strong> {user.email}</p>
               <p><strong>Role:</strong> {user.role === 'admin' ? 'Admin' : 'Student'}</p>
+              {user.role === 'admin' && (
+                <button 
+                  className="admin-button" 
+                  onClick={handleAdminClick} // Usa la función handleAdminClick para redirigir
+                >
+                  Admin Page
+                </button>
+              )}
             </div>
           )}
         </section>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost/virtual-academy/backend/api/auth/';
+const baseURL = 'http://localhost/Virtual-Academy/backend/api/auth/';
 
 const authService = {
   login: async (email, password) => {

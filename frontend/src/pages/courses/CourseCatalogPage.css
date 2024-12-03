@@ -38,3 +38,45 @@
   text-align: center;
   margin-top: 20px;
 }
+
+/* src/pages/courses/CourseCatalogPage.css */
+
+.course-catalog-container {
+  padding: 20px 5%;
+  background-color: #141414;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.catalog-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f4eaea;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.loading-text {
+  color: #ffffff;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+/* src/pages/courses/CourseCatalogPage.css */
+
+.error-text {
+  color: #e50914; /* Red color for error */
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
+}
+

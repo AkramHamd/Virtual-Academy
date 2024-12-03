@@ -43,6 +43,7 @@ CREATE TABLE comments (
   id INT PRIMARY KEY AUTO_INCREMENT,
   course_id INT,
   user_id INT,
+  nameuser TEXT,
   comment TEXT,
   rating INT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

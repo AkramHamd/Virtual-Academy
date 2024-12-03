@@ -21,7 +21,7 @@ if ($table_check_stmt->num_rows === 0) {
 }
 
 // Obtener los comentarios del curso
-$comment_query = "SELECT user_id, comment, rating FROM comments WHERE course_id = ?";
+$comment_query = "SELECT id, user_id, nameuser, comment, rating FROM comments WHERE course_id = ?";
 $comment_stmt = $conn->prepare($comment_query);
 $comment_stmt->bind_param('i', $course_id);
 $comment_stmt->execute();

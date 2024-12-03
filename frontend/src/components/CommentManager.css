@@ -1,0 +1,101 @@
+.comment-manager {
+    padding: 20px;
+    background: #141414; /* Fondo oscuro */
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    color: #ffffff; /* Texto en blanco */
+  }
+  
+  .add-comment-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .add-comment-section input,
+  .add-comment-section select {
+    padding: 8px;
+    border: 1px solid #444; /* Bordes oscuros */
+    border-radius: 5px;
+    background: #222; /* Fondo para inputs */
+    color: #ffffff;
+  }
+  
+  .add-comment-section input:focus,
+  .add-comment-section select:focus {
+    outline: none;
+    border-color: #e50914; /* Rojo en enfoque */
+  }
+  
+  .add-comment-section button {
+    padding: 8px 16px;
+    background: #007bff; /* Botón azul */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-comment-section button:hover {
+    background: #0056b3;
+  }
+  
+  .comments-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .comment-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #222; /* Fondo oscuro para comentarios */
+    border: 1px solid #444;
+    border-radius: 5px;
+  }
+  
+  .comment-item .comment-view {
+    display: flex;
+    flex-direction: column; /* Alinear contenido en columna */
+    gap: 5px;
+  }
+  
+  .comment-item .comment-text {
+    font-size: 14px;
+    color: #ffffff;
+  }
+  
+  .comment-item .comment-info {
+    font-size: 12px;
+    color: #aaaaaa; /* Color gris para información adicional */
+  }
+  
+  .comment-item .comment-info span {
+    display: block; /* Mostrar cada dato en una nueva línea */
+  }
+  
+  .comment-item .edit-comment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .comment-item button {
+    background: #e50914; /* Botón rojo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .comment-item button:hover {
+    background: #f40612; /* Rojo más claro en hover */
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .add-comment-section {
+      flex-direction: column;
+    }
+  }
+  
