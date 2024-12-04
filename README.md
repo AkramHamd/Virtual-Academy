@@ -1,5 +1,4 @@
 # Virtual Academy: Online Learning Platform
-## The final code of the projesis on the branch "final"
 ## Project Overview
 The **Virtual Academy** is an online learning platform that allows users to register, browse, and enroll in courses. The platform offers a wide range of courses with video tutorials, support materials, and interactive assessments (optional). It supports two main user roles: **Students** and **Administrators**.
 
