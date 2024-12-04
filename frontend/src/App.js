@@ -1,14 +1,12 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import UserPage from './pages/UserPage';
 import LandingPage from './pages/LandingPage';
 import CourseCatalogPage from './pages/courses/CourseCatalogPage';
 import CourseDetailsPage from './pages/courses/CourseDetailsPage';
-import AdminLayout from './layouts/AdminLayout';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 
 
